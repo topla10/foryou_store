@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import './products.css'
 import { TheHeader } from './TheHeader'
+import { Checkout } from './Checkout'
 
 function App() {
   const [prod, setProd] = useState([])
+  const [cart, setCart] = useState([])
   async function fetchData() {
     try {
       const response = await fetch('https://dummyjson.com/products')
@@ -19,10 +21,24 @@ function App() {
     }
   }
   
+  const addToCart = (element) => {
+    // Make sure no duplicated items added to the cart
+    if(!cart.some(item => item.id === element.id)) 
+      setCart([...cart, element])
+  }
+
+  const removeItem = (id) => {
+    setCart(cart.filter(item => item.id !== id))
+}
+
+const totalPrices = () => {
+  return cart.reduce((accumulator, item) => accumulator + item.price, 0)
+}
 
   useEffect(() => {
     fetchData()
   }, [])
+
   return (
     <>
       <TheHeader />
@@ -34,11 +50,13 @@ function App() {
               <h2 className="card-title">{product.title}</h2>
               <p className="card-description">{product.description}</p>
               <p className="card-price">${product.price}</p>
+              <button onClick={ () => addToCart(product)}>Add to cart</button>
             </div>
           </div>
         ))}
       </div>
-      <p>Hi there</p>
+      
+      <Checkout cart={cart} removeItem={removeItem} totalPrices={totalPrices}/>
     </>
   )
     
