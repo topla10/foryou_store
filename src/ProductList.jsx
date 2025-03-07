@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import './products.css'
-import { TheHeader } from './TheHeader'
-import { Checkout } from './Checkout'
 import { Link } from 'react-router-dom'
 
-export function ProductList() {
+export function ProductList({ cart, setCart }) {
   const [prod, setProd] = useState([])
-  const [cart, setCart] = useState([])
   
   async function fetchData() {
     try {
@@ -28,13 +25,6 @@ export function ProductList() {
       setCart([...cart, element])
   }
 
-  const removeItem = (id) => {
-    setCart(cart.filter(item => item.id !== id))
-}
-
-const totalPrices = () => {
-  return cart.reduce((accumulator, item) => accumulator + item.price, 0)
-}
 
   useEffect(() => {
     fetchData()
@@ -42,8 +32,8 @@ const totalPrices = () => {
 
   return (
     <>
-      <TheHeader />
       <h1>Product List</h1>
+
       <div className="card-container">
         {prod.map(product => (
           <div className="card" key={product.id}>
@@ -54,12 +44,11 @@ const totalPrices = () => {
               <button onClick={ () => addToCart(product)}>Add to cart</button>
             </div>
             <Link to={`/product/${product.id}`}>View Details</Link>
-
+ 
           </div>
         ))}
       </div>
       
-      <Checkout cart={cart} removeItem={removeItem} totalPrices={totalPrices}/>
     </>
   )
     
