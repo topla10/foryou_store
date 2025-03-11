@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import PropTypes from "prop-types"
+import { cartPropType } from './cartPropType'
 import './products.css'
 import { Link } from 'react-router-dom'
 
@@ -52,5 +54,8 @@ export function ProductList({ cart, setCart }) {
     </>
   )
     
-  
 }
+ProductList.propTypes = {
+  cart: cartPropType.isRequired,
+  setCart: PropTypes.func.isRequired,
+};

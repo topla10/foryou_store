@@ -28,24 +28,8 @@ function App() {
         <Route path='/product/:id' element= {<ProductDetails/>}/>
         <Route path='/aboutUs' element= {<AboutUs/>}/>
       </Routes>
-    
     </>
- 
-  )
-
- 
-  /*return (
-    <>
-      <Routes>
-        <Route path='/aboutUs' element= {<AboutUs/>}/>
-        <Route path='/' element={<ProductList/>}/>
-        <Route path='/product/:id' element= {<ProductDetails/>}/>
-        <Route path='/checkout' element= {<Checkout/>}/>
-      </Routes>
-      
-    </>
-  )*/
-    
+  )  
   
 }
 

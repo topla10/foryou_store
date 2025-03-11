@@ -42,7 +42,7 @@ export function ProductDetails() {
             <p><strong>Description:</strong> {product.description}</p>
 
             {/* Show multiple product images */}
-            <div className="image-gallery">
+            <div>
                 {product.images && product.images.map((img, index) => (
                     <img key={index} src={img} alt={`${product.title} ${index}`} style={{ width: '100px', margin: '5px' }} />
                 ))}

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-
+import PropTypes from "prop-types"
+import { cartPropType } from './cartPropType'
 export function Checkout({cart, removeItem, totalPrices}) {
     return(
         <div>
@@ -22,7 +22,10 @@ export function Checkout({cart, removeItem, totalPrices}) {
     )
 
 }
+
+/* Define PropTypes for checkout */
 Checkout.propTypes = {
+    cart: cartPropType.isRequired,
     removeItem: PropTypes.func.isRequired,
     totalPrices: PropTypes.func.isRequired
 }
