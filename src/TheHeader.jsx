@@ -1,5 +1,6 @@
 import './theHeader.css'
 import { Link } from 'react-router-dom'
+import { cartPropType } from './cartPropType'
 
 export function TheHeader({cart}) {
     return(
@@ -14,4 +15,7 @@ export function TheHeader({cart}) {
             </ul>      
         </div>
     )
+}
+TheHeader.propTypes = {
+    cart: cartPropType.isRequired,
 }

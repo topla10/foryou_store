@@ -15,10 +15,10 @@ export function ProductDetails() {
                 throw new Error(`Error Status: ${response.status}`)
             }
             const data = await response.json()
-            //console.log(data)
+    
             setProduct(data)
         } catch (error) {
-            console.error(`Error Fetching: ${error.message}`)
+            error(`Error Fetching: ${error.message}`)
         }
     }
     useEffect(() => {

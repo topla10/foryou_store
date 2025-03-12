@@ -15,9 +15,8 @@ export function ProductList({ cart, setCart }) {
       }
       const data = await response.json()
       setProd(data.products)
-      //console.log(data)
     } catch (error) {
-      console.log(`Fetch Error: ${error.message}`)
+      `Fetch Error: ${error.message}`
     }
   }
   
